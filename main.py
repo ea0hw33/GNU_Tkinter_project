@@ -15,9 +15,9 @@ class Disks:
 
     def set_discs_var(self, weight, base_weight):
         if error_handler(weight, base_weight) is None:
-            messagebox.showerror(title='Ошибка',
-                                 message= 'Введите число или дробное число, '
-                                          'входящее в рабочий диапазон чисел. Пример:\n72.5; 25')
+            messagebox.showerror(title='Error',
+                                 message= 'Enter a number or fractional number '
+                                          'within the working range of numbers. Example:\n72.5; 25')
         else:
             self.weight = weight
             self.base_weight = base_weight
@@ -55,7 +55,7 @@ def clear_handler(weight_ent, base_weight_ent, frame,disks):
 def main():
     root = Tk()
     root.resizable(False,False)
-    root.title("Калькулятор набора штангового веса")
+    root.title("Barbell gain assistant")
     icon = tk.PhotoImage(file='img/icon.png')
     root.iconphoto(False,icon)
 
@@ -68,14 +68,14 @@ def main():
            '15':ImageTk.PhotoImage(Image.open('img/15.png')),
            '20':ImageTk.PhotoImage(Image.open('img/20.png')),
            '25':ImageTk.PhotoImage(Image.open('img/25.png'))}
-    weight_lb = Label(content,text="Общий вес грифа с дисками:")
-    base_weight_lb = Label(content,text="Базовый вес(вес грифа и замков):")
+    weight_lb = Label(content,text="Total weight of barbell with discs:")
+    base_weight_lb = Label(content,text="Base weight (barbell and lock weight):")
     weight_ent = Entry(content)
     base_weight_ent = Entry(content)
     disks = Disks(frame,img)
-    button_input = Button(content, text='Рассчитать',
+    button_input = Button(content, text='Calculate',
                     command=(lambda: disks.button_command(weight_ent.get(),base_weight_ent.get())))
-    button_clear = Button(content, text='Очистить',
+    button_clear = Button(content, text='Clear',
                     command=(lambda: clear_handler(weight_ent,base_weight_ent,frame,disks)))
 
     content.pack(expand=True)
