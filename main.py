@@ -30,8 +30,7 @@ class Disks:
         #to clear frame
         for widget in self.frame.winfo_children():
             widget.destroy()
-
-        for i in self.discs_var.keys():
+        for i in dict(sorted(self.discs_var.items(), key=lambda y: float(y[0]), reverse=True)):
             if self.discs_var[i] != 0:
                 for _ in range(self.discs_var[i]):
                     img_lb = Label(self.frame, image=self.img[i])
